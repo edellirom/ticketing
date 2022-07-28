@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      -  ./infrastructure/k8s/*
+build:
+#  local:
+#    push: false
+  googleCloudBuild:
+    projectId: ticket-office-dev
+  artifacts:
+    - image: eu.gcr.io/ticket-office-dev/auth
+      context: ./auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
