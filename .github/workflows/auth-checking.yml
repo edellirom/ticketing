@@ -1,4 +1,4 @@
-name: checking
+name: auth-checking
 
 on:
   pull_request
