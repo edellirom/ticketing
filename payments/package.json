@@ -9,7 +9,7 @@
     "eslint": "eslint",
     "test": "jest --watchAll --no-cache",
     "jest:watch": "jest --watch --verbose false",
-    "jest:ci": "jest --detectOpenHandles"
+     "test:ci": "jest"
   },
   "jest": {
     "preset": "ts-jest",
