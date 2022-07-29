@@ -2,7 +2,9 @@
 name: tickets-checking
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'tickets/**'
 
 jobs:
   build:
