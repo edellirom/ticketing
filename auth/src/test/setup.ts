@@ -3,14 +3,20 @@ import mongoose from 'mongoose';
 import { app } from '../app';
 import request from 'supertest';
 
+
 // declare global {
-//   var getSigningCookie: () => Promise<string[]>;
+//   var signin: () => Promise<string[]>;
 // }
 
+// declare global {
+//   var signin: () => string[];
+// }
+
+console.log('setup');
 let mongo: any;
 
 beforeAll(async () => {
-  process.env.JWT_KEY = 'testsercret';
+  process.env.JWT_KEY = 'fasfasdfaasd';
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
   mongo = await MongoMemoryServer.create();
@@ -30,7 +36,7 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-// global.getSigningCookie = async () => {
+// global.signin = async () => {
 //   const validUser = {
 //     email: 'test@gmail.com',
 //     password: 'password',

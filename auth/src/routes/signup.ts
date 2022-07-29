@@ -22,6 +22,8 @@ const signUp = async (request: Request, response: Response) => {
   }
   const user = User.build({ email, password });
 
+  console.log('signup',config.JWT_KEY);
+
   await user.save();
   //Generate JWT
   const userJwt = jwt.sign(
@@ -31,6 +33,7 @@ const signUp = async (request: Request, response: Response) => {
     },
     config.JWT_KEY
   );
+
   //Store it on session object
   request.session = {
     jwt: userJwt,
