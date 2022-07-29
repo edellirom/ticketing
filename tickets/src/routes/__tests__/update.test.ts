@@ -1,8 +1,7 @@
 import request from 'supertest';
-import { app } from '../../app/app';
+import { app, natsClient } from '../../app';
 import { createId } from '../../utils';
 import { TicketPayload } from '../../types';
-import { natsClient } from '../../app';
 import { Ticket } from '../../models';
 
 const url = '/api/tickets';
@@ -26,7 +25,7 @@ describe(`Route PUT ${url}:id`, () => {
   });
 
   test('should return a 401 status if the user is not authenticated', async () => {
-    request(app).put(`${url}/${id}`).send(payload).expect(401);
+    await request(app).put(`${url}/${id}`).send(payload).expect(401);
   });
 
   test('should return a 401 status if the user does not own the ticket', async () => {
