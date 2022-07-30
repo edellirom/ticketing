@@ -1,15 +1,14 @@
 name: deploy-manifests
-
 on:
   push:
-    branches: 
+    branches:
       - main
     paths:
       - 'infra/**'
-jobs: 
+jobs:
   build:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v2
       - uses: digitalocean/action-doctl@v2
         with:
