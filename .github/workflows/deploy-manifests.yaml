@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: digitalocean/action-doctl@v2
-      - run: doctl auth init -t "dop_v1_4e1dfa7550e84fe39942415636f6e1b90a69fab80e9973a5a2355b202d37e8c5"
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save ticketing
       - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
