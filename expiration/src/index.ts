@@ -2,6 +2,8 @@ import { getNats } from './app';
 import { OrderCreatedListener } from './events/listeners';
 
 const start = async () => {
+  console.log('Starting up orders microservice....');
+
   if (!process.env.NATS_CLUSTER_ID) {
     throw new Error('NATS_CLUSTER_ID must be defined');
   }
